@@ -1,0 +1,28 @@
+<div class="user-form">
+    <form [formGroup]="userForm" (ngSubmit)="userformSubmit()" >
+        Name: <input type="text" formControlName="name" required>
+        <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                  name="dp" ngbDatepicker #d="ngbDatepicker" formControlName="dob">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+            </div>
+          </div>
+        <div formGroupName="address">
+            <h3>Address</h3>
+            <label>
+                Address1:
+                <input type="text" formControlName="address1">
+              </label>
+            
+              <label>
+                City:
+                <input type="text" formControlName="city">
+              </label>
+        </div>
+        <div>
+            <button type="submit" [disabled]="!userForm.valid">submit</button>
+        </div>
+        Form value : {{userForm.value | json}}
+    </form>
+</div>
